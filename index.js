@@ -8,12 +8,6 @@ const multiply = (num1, num2) => num1 * num2;
 
 const divide = (num1, num2) => num1 / num2;
 
-//variables for the operator :
-
-let num1;
-let num2;
-let operator;
-
 //operate function :
 
 function operate(num1, num2, operator) {
@@ -36,8 +30,10 @@ const clearButton = document.querySelector(".clear-button");
 let currentOperator = "";
 let currentNumber1String = "";
 let currentNumber2String = "";
-let currentNumber1 = "";
-let currentNumber2 = "";
+let num1 = "";
+let num2 = "";
+let operator;
+
 let result = 0;
 
 // numbers event listener
@@ -46,12 +42,12 @@ numberButtons.forEach((button) => {
   button.addEventListener("click", function () {
     if (currentOperator == "") {
       currentNumber1String += this.innerHTML;
-      currentNumber1 = parseFloat(currentNumber1String);
+      num1 = parseFloat(currentNumber1String);
     } else if (currentOperator !== "") {
       currentNumber2String += this.innerHTML;
-      currentNumber2 = parseFloat(currentNumber2String);
+      num2 = parseFloat(currentNumber2String);
     }
-    display.innerHTML = currentNumber1 + currentOperator + currentNumber2;
+    display.innerHTML = num1 + currentOperator + num2;
   });
 });
 
@@ -60,25 +56,29 @@ numberButtons.forEach((button) => {
 operatorButtons.forEach((button) => {
   button.addEventListener("click", function () {
     currentOperator = this.innerHTML;
-    display.innerHTML = currentNumber1 + currentOperator;
+    display.innerHTML = num1 + currentOperator;
   });
 });
 
-// operating event listener
+// equal Button event listener
 
 equalButton.addEventListener("click", function () {
   if (currentOperator == "+") {
-    num1 = currentNumber1;
-    num2 = currentNumber2;
-    result = num1 + num2;
-    display.innerHTML = "= " + result;
+    result = operate(num1, num2, add);
+  } else if (currentOperator == "-") {
+    result = operate(num1, num2, subtract);
+  } else if (currentOperator == "*") {
+    result = operate(num1, num2, multiply);
+  } else if (currentOperator == "/") {
+    result = operate(num1, num2, divide);
   }
+  display.innerHTML = "= " + result;
 });
 
 // clear function:
 function clear() {
-  currentNumber1 = "";
-  currentNumber2 = "";
+  num1 = "";
+  num2 = "";
   currentNumber1String = "";
   currentNumber2String = "";
   currentOperator = "";
