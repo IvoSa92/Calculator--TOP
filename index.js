@@ -33,10 +33,9 @@ let currentNumber2String = "";
 let num1 = "";
 let num2 = "";
 let operator;
-
 let result = 0;
 
-// numbers event listener
+// numbers button event listener
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", function () {
@@ -86,3 +85,18 @@ function clear() {
 }
 
 clearButton.addEventListener("click", clear);
+
+function deleteNumber() {
+  display.innerHTML = display.innerHTML.slice(0, -1);
+  if (currentOperator == "") {
+    currentNumber1String = currentNumber1String.slice(0, -1);
+    num1 = parseFloat(currentNumber1String);
+  } else if (currentOperator !== "") {
+    currentNumber2String = currentNumber2String.slice(0, -1);
+    num2 = parseFloat(currentNumber2String);
+  } else if (num1 !== "" && currentOperator !== "" && num2 == "") {
+    currentOperator.slice(0, -1);
+  }
+}
+
+deleteButton.addEventListener("click", deleteNumber);
