@@ -28,8 +28,7 @@ const clearButton = document.querySelector(".clear-button");
 // variables
 
 let currentOperator = "";
-let currentNumber1String = "";
-let currentNumber2String = "";
+
 let num1 = "";
 let num2 = "";
 let operator;
@@ -40,11 +39,11 @@ let result = 0;
 numberButtons.forEach((button) => {
   button.addEventListener("click", function () {
     if (currentOperator == "") {
-      currentNumber1String += this.innerHTML;
-      num1 = parseFloat(currentNumber1String);
+      num1 += this.innerHTML;
+      num1 = Number(num1);
     } else if (currentOperator !== "") {
-      currentNumber2String += this.innerHTML;
-      num2 = parseFloat(currentNumber2String);
+      num2 += this.innerHTML;
+      num2 = Number(num2);
     }
     display.innerHTML = num1 + currentOperator + num2;
   });
@@ -56,6 +55,7 @@ operatorButtons.forEach((button) => {
   button.addEventListener("click", function () {
     currentOperator = this.innerHTML;
     display.innerHTML = num1 + currentOperator;
+    console.log(currentOperator);
   });
 });
 
@@ -78,14 +78,13 @@ equalButton.addEventListener("click", function () {
 function clear() {
   num1 = "";
   num2 = "";
-  currentNumber1String = "";
-  currentNumber2String = "";
   currentOperator = "";
   display.innerHTML = "";
 }
 
 clearButton.addEventListener("click", clear);
 
+//delete function:
 function deleteNumber() {
   display.innerHTML = display.innerHTML.slice(0, -1);
   if (currentOperator == "") {
