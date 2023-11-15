@@ -64,12 +64,20 @@ operatorButtons.forEach((button) => {
 equalButton.addEventListener("click", function () {
   if (currentOperator == "+") {
     result = operate(num1, num2, add);
+    num1 = result;
+    num2 = "";
   } else if (currentOperator == "-") {
     result = operate(num1, num2, subtract);
+    num1 = result;
+    num2 = "";
   } else if (currentOperator == "*") {
     result = operate(num1, num2, multiply);
+    num1 = result;
+    num2 = "";
   } else if (currentOperator == "/") {
     result = operate(num1, num2, divide);
+    num1 = result;
+    num2 = "";
   }
   display.innerHTML = "= " + result;
 });
@@ -80,6 +88,7 @@ function clear() {
   num2 = "";
   currentOperator = "";
   display.innerHTML = "";
+  result = 0;
 }
 
 clearButton.addEventListener("click", clear);
@@ -88,11 +97,11 @@ clearButton.addEventListener("click", clear);
 function deleteNumber() {
   display.innerHTML = display.innerHTML.slice(0, -1);
   if (currentOperator == "") {
-    currentNumber1String = currentNumber1String.slice(0, -1);
-    num1 = parseFloat(currentNumber1String);
+    num1 = num1.toString().slice(0, -1);
+    num1 = Number(num1);
   } else if (currentOperator !== "") {
-    currentNumber2String = currentNumber2String.slice(0, -1);
-    num2 = parseFloat(currentNumber2String);
+    num2 = num2.toString().slice(0, -1);
+    num2 = Number(num2);
   } else if (num1 !== "" && currentOperator !== "" && num2 == "") {
     currentOperator.slice(0, -1);
   }
