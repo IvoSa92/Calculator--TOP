@@ -51,7 +51,7 @@ numberButtons.forEach((button) => {
   });
 });
 
-//operator event listener
+//operator buttons event listener
 
 operatorButtons.forEach((button) => {
   button.addEventListener("click", function () {
