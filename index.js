@@ -103,9 +103,10 @@ function deleteNumber() {
   display.innerHTML = display.innerHTML.slice(0, -1);
   if (currentOperator == "") {
     num1 = num1.toString().slice(0, -1);
-    num1 = Number(num1);
+    num1 = num1 === "" ? "" : Number(num1);
   } else if (currentOperator !== "" && num1 !== "" && num2 !== "") {
     num2 = num2.toString().slice(0, -1);
+    num2 = num2 === "" ? "" : Number(num2);
   } else if (num1 !== "" && currentOperator !== "" && num2 == "") {
     currentOperator = currentOperator.slice(0, -1);
   }
