@@ -41,10 +41,11 @@ numberButtons.forEach((button) => {
     if (currentOperator == "") {
       num1 += this.innerHTML;
       num1 = Number(num1);
-    } else if (currentOperator !== "") {
+    } else if ((currentOperator !== "" && num2 === "") || num2 !== "") {
       num2 += this.innerHTML;
       num2 = Number(num2);
     }
+
     display.innerHTML = num1 + currentOperator + num2;
   });
 });
@@ -54,30 +55,34 @@ numberButtons.forEach((button) => {
 operatorButtons.forEach((button) => {
   button.addEventListener("click", function () {
     currentOperator = this.innerHTML;
+    operator = currentOperator;
     display.innerHTML = num1 + currentOperator;
-    console.log(currentOperator);
   });
 });
 
-// equal Button event listener
+// equal Button event listener, calculation:
 
 equalButton.addEventListener("click", function () {
   if (currentOperator == "+") {
     result = operate(num1, num2, add);
     num1 = result;
     num2 = "";
+    currentOperator = "";
   } else if (currentOperator == "-") {
     result = operate(num1, num2, subtract);
     num1 = result;
     num2 = "";
+    currentOperator = "";
   } else if (currentOperator == "*") {
     result = operate(num1, num2, multiply);
     num1 = result;
     num2 = "";
+    currentOperator = "";
   } else if (currentOperator == "/") {
     result = operate(num1, num2, divide);
     num1 = result;
     num2 = "";
+    currentOperator = "";
   }
   display.innerHTML = "= " + result;
 });
@@ -99,11 +104,10 @@ function deleteNumber() {
   if (currentOperator == "") {
     num1 = num1.toString().slice(0, -1);
     num1 = Number(num1);
-  } else if (currentOperator !== "") {
+  } else if (currentOperator !== "" && num1 !== "" && num2 !== "") {
     num2 = num2.toString().slice(0, -1);
-    num2 = Number(num2);
   } else if (num1 !== "" && currentOperator !== "" && num2 == "") {
-    currentOperator.slice(0, -1);
+    currentOperator = currentOperator.slice(0, -1);
   }
 }
 
