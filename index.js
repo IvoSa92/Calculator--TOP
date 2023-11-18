@@ -54,8 +54,26 @@ numberButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
   button.addEventListener("click", function () {
-    currentOperator = this.innerHTML;
-    operator = currentOperator;
+    if (currentOperator == "") {
+      currentOperator = this.innerHTML;
+    } else if (currentOperator == "+") {
+      num1 = result = operate(num1, num2, add);
+      num2 = "";
+      currentOperator = this.innerHTML;
+    } else if (currentOperator == "-") {
+      num1 = result = operate(num1, num2, subtract);
+      num2 = "";
+      currentOperator = this.innerHTML;
+    } else if (currentOperator == "*") {
+      num1 = result = operate(num1, num2, multiply);
+      num2 = "";
+      currentOperator = this.innerHTML;
+    } else if (currentOperator == "/") {
+      num1 = result = operate(num1, num2, divide);
+      num2 = "";
+      currentOperator = this.innerHTML;
+    }
+
     display.innerHTML = num1 + currentOperator;
   });
 });
@@ -64,23 +82,19 @@ operatorButtons.forEach((button) => {
 
 equalButton.addEventListener("click", function () {
   if (currentOperator == "+") {
-    result = operate(num1, num2, add);
-    num1 = result;
+    num1 = result = operate(num1, num2, add);
     num2 = "";
     currentOperator = "";
   } else if (currentOperator == "-") {
-    result = operate(num1, num2, subtract);
-    num1 = result;
+    mum1 = result = operate(num1, num2, subtract);
     num2 = "";
     currentOperator = "";
   } else if (currentOperator == "*") {
-    result = operate(num1, num2, multiply);
-    num1 = result;
+    num1 = result = operate(num1, num2, multiply);
     num2 = "";
     currentOperator = "";
   } else if (currentOperator == "/") {
-    result = operate(num1, num2, divide);
-    num1 = result;
+    num1 = result = operate(num1, num2, divide);
     num2 = "";
     currentOperator = "";
   }
