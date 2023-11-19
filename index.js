@@ -71,6 +71,10 @@ operatorButtons.forEach((button) => {
       num1 = parseFloat(num1.toFixed(5));
       num2 = "";
       currentOperator = this.innerHTML;
+    } else if (currentOperator == "/" && num2 == 0) {
+      result = "Please don´t do that..";
+      display.innerHTML = result;
+      return;
     } else if (currentOperator == "/") {
       num1 = result = operate(num1, num2, divide);
       num1 = parseFloat(num1.toFixed(5));
@@ -97,6 +101,10 @@ equalButton.addEventListener("click", function () {
     num1 = result = operate(num1, num2, multiply);
     num2 = "";
     currentOperator = "";
+  } else if (currentOperator == "/" && num2 == "0") {
+    result = "You know that´s impossible 😈";
+    display.innerHTML = result;
+    return;
   } else if (currentOperator == "/") {
     num1 = result = operate(num1, num2, divide);
     num2 = "";
