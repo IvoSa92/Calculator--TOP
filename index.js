@@ -8,6 +8,8 @@ const multiply = (num1, num2) => num1 * num2;
 
 const divide = (num1, num2) => num1 / num2;
 
+const remainder = (num1, num2) => num1 % num2;
+
 //operate function :
 
 function operate(num1, num2, operator) {
@@ -78,6 +80,10 @@ operatorButtons.forEach((button) => {
       num1 = parseFloat(num1.toFixed(5));
       num2 = "";
       currentOperator = this.innerHTML;
+    } else if (currentOperator == "%") {
+      num1 = result = operate(num1, num2, remainder);
+      num1 = parseFloat(num1.toFixed(5));
+      num2 = "";
     }
 
     display.innerHTML = num1 + currentOperator;
@@ -105,6 +111,10 @@ equalButton.addEventListener("click", function () {
     return;
   } else if (currentOperator == "/") {
     num1 = result = operate(num1, num2, divide);
+    num2 = "";
+    currentOperator = "";
+  } else if (currentOperator == "%") {
+    num1 = result = operate(num1, num2, remainder);
     num2 = "";
     currentOperator = "";
   }
