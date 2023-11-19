@@ -58,18 +58,22 @@ operatorButtons.forEach((button) => {
       currentOperator = this.innerHTML;
     } else if (currentOperator == "+") {
       num1 = result = operate(num1, num2, add);
+      num1 = parseFloat(num1.toFixed(5));
       num2 = "";
       currentOperator = this.innerHTML;
     } else if (currentOperator == "-") {
       num1 = result = operate(num1, num2, subtract);
+      num1 = parseFloat(num1.toFixed(5));
       num2 = "";
       currentOperator = this.innerHTML;
     } else if (currentOperator == "*") {
       num1 = result = operate(num1, num2, multiply);
+      num1 = parseFloat(num1.toFixed(5));
       num2 = "";
       currentOperator = this.innerHTML;
     } else if (currentOperator == "/") {
       num1 = result = operate(num1, num2, divide);
+      num1 = parseFloat(num1.toFixed(5));
       num2 = "";
       currentOperator = this.innerHTML;
     }
@@ -98,7 +102,7 @@ equalButton.addEventListener("click", function () {
     num2 = "";
     currentOperator = "";
   }
-  display.innerHTML = "= " + result;
+  display.innerHTML = "= " + parseFloat(result.toFixed(5));
 });
 
 // clear function:
