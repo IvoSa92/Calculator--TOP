@@ -24,17 +24,15 @@ const operatorButtons = document.querySelectorAll(".operator-button");
 const deleteButton = document.querySelector(".delete-button");
 const equalButton = document.querySelector(".equal-button");
 const clearButton = document.querySelector(".clear-button");
-
-// variables
+const dotButton = document.querySelector(".dot-button");
 
 let currentOperator = "";
-
 let num1 = "";
 let num2 = "";
 let operator;
 let result = 0;
 
-// numbers button event listener
+// numbers button event listener and functions
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", function () {
@@ -50,7 +48,7 @@ numberButtons.forEach((button) => {
   });
 });
 
-//operator buttons event listener
+//operator buttons event listener and functions
 
 operatorButtons.forEach((button) => {
   button.addEventListener("click", function () {
@@ -139,3 +137,17 @@ function deleteNumber() {
 }
 
 deleteButton.addEventListener("click", deleteNumber);
+
+// dot button
+
+dotButton.addEventListener("click", function () {
+  if (num1 !== "" && num2 == "" && !num1.toString().includes(".")) {
+    num1 += ".";
+    display.innerHTML = num1;
+    return;
+  } else if (num1 !== "" && num2 !== "" && !num2.toString().includes(".")) {
+    num2 += ".";
+    display.innerHTML = num1 + currentOperator + num2;
+    return;
+  }
+});
