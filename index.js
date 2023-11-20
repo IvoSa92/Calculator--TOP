@@ -34,6 +34,11 @@ let num2 = "";
 let operator;
 let result = 0;
 
+document.addEventListener("DOMContentLoaded", (event) => {
+  const display = document.querySelector(".display");
+  display.innerHTML = "Lets have fun  ⚡️";
+});
+
 // numbers button event listener and functions
 
 numberButtons.forEach((button) => {
@@ -128,6 +133,7 @@ function clear() {
   currentOperator = "";
   display.innerHTML = "";
   result = 0;
+  display.innerHTML = "Give me another one ! 😁" + " ";
 }
 
 clearButton.addEventListener("click", clear);
