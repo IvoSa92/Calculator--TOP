@@ -1,12 +1,53 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10rem;
 }
+.header {
+  font-size: 90px;
+  z-index: 1;
+  font-family: "Audiowide";
+  background: linear-gradient(
+    to right,
+    #3a0c9d 20%,
+    #00affa 30%,
+    #09516f 70%,
+    #764ada 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00dbde;
+  background-image: linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
+}
 
 .calculator-container {
-  background-color: rgb(162, 160, 160);
+  position: relative;
+  z-index: 1;
+  background-image: linear-gradient(135deg, #1f1c2c 10%, #928dab 100%);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,11 +60,18 @@ body {
 }
 
 .display {
-  background-color: white;
+  background-color: #9ba6a5;
+
   width: 100%;
   height: 20%;
   border-radius: 8px;
-  padding: 8px;
+  padding: 0px;
+  font-size: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  color: #f9f1f1;
 }
 
 .grid-container {
@@ -39,13 +87,130 @@ body {
   padding: 8px;
 }
 
-button {
-  height: 5rem;
-  background-color: grey;
-  margin: 5px;
-  border-radius: 8px;
-}
+/* Button Styles*/
 
 .equal-button {
   grid-column: span 2;
+  height: 82px;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(to bottom, red, #d17ed7);
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: button-shimmer 2s infinite;
+  transition: all 0.3s ease-in-out;
+}
+
+.equal-button:hover {
+  background: linear-gradient(to bottom, red, rgb(248, 207, 207));
+  animation: button-particles 1s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+.equal-button:active {
+  transform: scale(0.5);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.operator-button {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(to bottom, #04d0eb, #1b1c3f);
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: button-shimmer 2s infinite;
+  transition: all 0.3s ease-in-out;
+}
+
+.operator-button:hover {
+  background: linear-gradient(to bottom, #25dcf5, #2d2f63);
+  animation: button-particles 1s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+.operator-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.number-button {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(to bottom, #1b1c3f, #4a4e91);
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: button-shimmer 2s infinite;
+  transition: all 0.3s ease-in-out;
+}
+
+.number-button:hover {
+  background: linear-gradient(to bottom, #2c2f63, #5b67b7);
+  animation: button-particles 1s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+.number-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.delete-button,
+.clear-button {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(to bottom, red, #d364db);
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: button-shimmer 2s infinite;
+  transition: all 0.3s ease-in-out;
+}
+
+.delete-button:hover {
+  background: linear-gradient(to bottom, red, rgb(248, 207, 207));
+  animation: button-particles 1s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+.delete-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.clear-button:hover {
+  background: linear-gradient(to bottom, red, rgb(248, 207, 207));
+  animation: button-particles 1s ease-in-out infinite;
+  transform: translateY(-2px);
+}
+
+.clear-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
