@@ -233,18 +233,16 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-//key event Listener for Delete Button:
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Backspace") {
-    document.querySelector(".delete-button").click();
-  }
-});
-
-//key event Listener for clear Button:
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    document.querySelector(".clear-button").click();
+document.addEventListener("keydown", (even) => {
+  switch (even.key) {
+    case "Escape":
+      clearButton.click();
+      break;
+    case ".":
+      dotButton.click();
+      break;
+    case "Backspace":
+      deleteButton.click();
+      break;
   }
 });
