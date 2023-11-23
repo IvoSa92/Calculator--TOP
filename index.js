@@ -226,6 +226,10 @@ function getOperation(operator) {
 
 //Key Event Listener for equal Button:
 
-equalButton.addEventListener("keydown", (event) => {
-  console.log("hi");
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    if (num1 !== "" && num2 !== "" && currentOperator !== "") {
+      document.querySelector(".equal-button").click();
+    }
+  }
 });
