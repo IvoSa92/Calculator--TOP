@@ -133,7 +133,6 @@ function clear() {
   num1 = "";
   num2 = "";
   currentOperator = "";
-  display.innerHTML = "";
   result = 0;
   display.innerHTML = "Give me another one ! 😁" + " ";
 }
@@ -231,5 +230,21 @@ document.addEventListener("keydown", (event) => {
     if (num1 !== "" && num2 !== "" && currentOperator !== "") {
       document.querySelector(".equal-button").click();
     }
+  }
+});
+
+//key event Listener for Delete Button:
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Backspace") {
+    document.querySelector(".delete-button").click();
+  }
+});
+
+//key event Listener for clear Button:
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    document.querySelector(".clear-button").click();
   }
 });
