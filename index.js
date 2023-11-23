@@ -34,6 +34,8 @@ let num2 = "";
 let operator;
 let result = 0;
 
+// Starting Text Display
+
 document.addEventListener("DOMContentLoaded", (event) => {
   const display = document.querySelector(".display");
   display.innerHTML = "Lets have fun  ⚡️";
@@ -166,4 +168,64 @@ dotButton.addEventListener("click", function () {
     display.innerHTML = num1 + currentOperator + num2;
     return;
   }
+});
+
+// Key Event Listener for Numbers:
+
+const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+document.addEventListener("keydown", (event) => {
+  if (numbers.includes(event.key)) {
+    if (currentOperator === "") {
+      num1 += event.key;
+      num1 = Number(num1);
+    } else {
+      num2 += event.key;
+      num2 = Number(num2);
+    }
+  }
+
+  display.innerHTML = num1 + currentOperator + num2;
+});
+
+//Key Event Listener for Operators:
+
+const operators = ["+", "-", "*", "/", "%"];
+document.addEventListener("keydown", (event) => {
+  if (operators.includes(event.key)) {
+    if (currentOperator !== "" && num2 !== "") {
+      result = operate(
+        Number(num1),
+        Number(num2),
+        getOperation(currentOperator)
+      );
+      num1 = result;
+      num2 = "";
+      display.innerHTML = num1;
+    }
+    currentOperator = event.key;
+    display.innerHTML = num1 + " " + currentOperator + " " + num2;
+  }
+});
+
+function getOperation(operator) {
+  switch (operator) {
+    case "+":
+      return add;
+    case "-":
+      return subtract;
+    case "*":
+      return multiply;
+    case "/":
+      return divide;
+    case "%":
+      return remainder;
+    default:
+      return null;
+  }
+}
+
+//Key Event Listener for equal Button:
+
+equalButton.addEventListener("keydown", (event) => {
+  console.log("hi");
 });
