@@ -223,3 +223,10 @@ body {
   text-decoration: underline;
   color: #09516f;
 }
+
+/* keyboard animation*/
+
+.number-key-pressed {
+  transform: scale(0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}

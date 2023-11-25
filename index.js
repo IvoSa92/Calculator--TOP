@@ -233,8 +233,8 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.addEventListener("keydown", (even) => {
-  switch (even.key) {
+document.addEventListener("keydown", (event) => {
+  switch (event.key) {
     case "Escape":
       clearButton.click();
       break;
@@ -247,4 +247,25 @@ document.addEventListener("keydown", (even) => {
   }
 });
 
-console.log(2 + 2);
+//Animation for Key event Listener:
+//number-buttons:
+
+document.addEventListener("keydown", (event) => {
+  if (event.key >= 0 && event.key <= 9) {
+    const buttonPressed = document.querySelector(`.number-${event.key}`);
+    if (buttonPressed) {
+      buttonPressed.classList.add("number-key-pressed");
+    }
+  }
+});
+
+document.addEventListener("keyup", (event) => {
+  if (event.key >= 0 && event.key <= 9) {
+    const buttonReleased = document.querySelector(`.number-${event.key}`);
+    if (buttonReleased) {
+      buttonReleased.classList.remove("number-key-pressed");
+    }
+  }
+});
+
+//operator buttons:
