@@ -105,7 +105,7 @@ equalButton.addEventListener("click", function () {
     num2 = "";
     currentOperator = "";
   } else if (currentOperator == "-") {
-    mum1 = result = operate(num1, num2, subtract);
+    num1 = result = operate(num1, num2, subtract);
     num2 = "";
     currentOperator = "";
   } else if (currentOperator == "*") {
@@ -246,3 +246,5 @@ document.addEventListener("keydown", (even) => {
       break;
   }
 });
+
+console.log(2 + 2);
