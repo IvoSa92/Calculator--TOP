@@ -269,28 +269,6 @@ document.addEventListener("keyup", (event) => {
 });
 
 //operator buttons:
-/*
-document.addEventListener("keydown", (event) => {
-  if (operators.includes(event.key)) {
-    const buttonPressed = document.querySelector(`.${event.key}`);
-    if (buttonPressed) {
-      buttonPressed.classList.add("key-pressed");
-    }
-  }
-});
-
-document.addEventListener("keyup", (event) => {
-  if (event.key >= 0 && event.key <= 9) {
-    const buttonReleased = document.querySelector(`.number-${event.key}`);
-    if (buttonReleased) {
-      buttonReleased.classList.remove("key-pressed");
-    }
-  }
-});
-*/
-document.addEventListener("keydown", (event) => {
-  console.log(event.key);
-});
 
 document.addEventListener("keydown", (event) => {
   const operatorKeys = {
@@ -301,11 +279,19 @@ document.addEventListener("keydown", (event) => {
     "%": "remainder",
   };
 
-  const operatorClass = operatorKeys[event.key];
-  if (operatorClass) {
-    const operatorButton = document.querySelector(`.${operatorClass}`);
-    if (operatorButton) {
-      operatorButton.classList.add("key-pressed");
+  const specialKeys = {
+    Enter: "equal-button",
+    Backspace: "delete-button",
+    Escape: "clear-button",
+    ".": "dot-button",
+  };
+
+  let buttonClass = operatorKeys[event.key] || specialKeys[event.key];
+
+  if (buttonClass) {
+    const button = document.querySelector(`.${buttonClass}`);
+    if (button) {
+      button.classList.add("key-pressed");
     }
   }
 });
@@ -319,11 +305,19 @@ document.addEventListener("keyup", (event) => {
     "%": "remainder",
   };
 
-  const operatorClass = operatorKeys[event.key];
-  if (operatorClass) {
-    const operatorButton = document.querySelector(`.${operatorClass}`);
-    if (operatorButton) {
-      operatorButton.classList.remove("key-pressed");
+  const specialKeys = {
+    Enter: "equal-button",
+    Backspace: "delete-button",
+    Escape: "clear-button",
+    ".": "dot-button",
+  };
+
+  let buttonClass = operatorKeys[event.key] || specialKeys[event.key];
+
+  if (buttonClass) {
+    const button = document.querySelector(`.${buttonClass}`);
+    if (button) {
+      button.classList.remove("key-pressed");
     }
   }
 });
